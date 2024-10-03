@@ -1,0 +1,933 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    background: hsl(273, 100%, 10%);
+    height: 100vh;
+    width: 100%;
+}
+
+.animations-room {
+
+    --table-gradient: linear-gradient(145deg, #7c6086, #7c6086);
+    --table-box-shadow:
+        inset 15px 40px #7c6086,
+        inset -15px -40px #7c6086,
+        inset 19px 50px 4px rgba(0, 0, 0, 0.3),
+        inset -19px -50px 4px rgba(0, 0, 0, 0.3);
+
+    --table-legs-gradient: linear-gradient(145deg, #7c6086, #7c6086);
+    --table-legs-box-shadow: inset 4px 4px 20px #7c6086;
+
+    --table-legs-rest-gradient: linear-gradient(145deg, #7c6086, #7c6086);
+    --table-legs-rest-box-shadow: inset 3px 3px 15px #735a7c;
+
+    --transition: all 1.5s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -1rem;
+    perspective: 3000px;
+    perspective-origin: 50% 50%;
+}
+
+h1 {
+    position: absolute;
+    left: 18%;
+    top: -2rem;
+    text-align: center;
+    color: hsl(0 0% 100%);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-shadow: 0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577,
+        0rem 0rem .11rem #6e5577;
+    transform: matrix(6, 0, 0, 5, 0, 125);
+    transition: all 1.5s ease-in-out;
+}
+
+/* STYLES FOR TABLE */
+
+.table {
+    position: relative;
+    top: 0;
+    transform: translateZ(0) rotateX(77deg);
+    transform-style: preserve-3d;
+    width: 50%;
+    height: 100%;
+    background: var(--table-gradient);
+    box-shadow: var(--table-box-shadow);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.table::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    filter: blur(40px);
+    top: 50%;
+    left: 0;
+    transform: translateZ(-50px);
+}
+
+.table-back-leg-1,
+.table-back-leg-2,
+.table-front-leg-1,
+.table-front-leg-2,
+.table-legs-rest-right,
+.table-legs-rest-left {
+    position: absolute;
+    top: 97.95%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: rotate(19deg) rotateX(180deg) translateZ(100px);
+    width: 1rem;
+    height: 30rem;
+    background: var(--table-legs-gradient);
+    /* border: 2px solid #1c2329; */
+    border-radius: 2px;
+    box-shadow: var(--table-legs-box-shadow);
+    transition: var(--transition);
+}
+
+.table-back-leg-2,
+.table-front-leg-2 {
+    transform: rotate(-19deg) rotateX(180deg) translateZ(100px);
+}
+
+.table-back-leg-1 {
+    top: 87%;
+    left: 46.5%;
+    transform: rotate(18deg) rotateX(180deg) translateZ(100px) scaleY(0.6);
+    /* animation: breakLegs 3s ease-in-out forwards; */
+}
+
+.table-back-leg-2 {
+    top: 87%;
+    left: 53.5%;
+    transform: rotate(-18deg) rotateX(180deg) translateZ(100px) scaleY(0.6);
+    /* animation: breakLegs 3s ease-in-out forwards; */
+}
+
+.table-legs-rest-right,
+.table-legs-rest-left {
+    top: 122%;
+    left: calc(50% - 4.7rem);
+    transform: rotate(-1.25deg) rotateX(91deg) translateZ(100px) scaleY(32) scaleX(1.35);
+    background: var(--table-legs-rest-gradient);
+    box-shadow: var(--table-legs-rest-box-shadow);
+    border-radius: 5%;
+}
+
+.table-legs-rest-left {
+    left: calc(50% + 4.7rem);
+    transform: rotate(1.25deg) rotateX(91deg) translateZ(100px) scaleY(32) scaleX(1.35);
+}
+
+/* STYLES FOR TABLE */
+
+/* STYLES FOR CHAIR */
+
+.scene {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 45.25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+}
+
+.scene-2 {
+    top: 68.25%;
+    left: 20%;
+}
+
+.scene-3 {
+    top: 63%;
+    left: 80%;
+}
+
+.scene-4 {
+    top: 85%;
+    left: 56.85%;
+    z-index: 2;
+}
+
+.chair {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    transform-style: preserve-3d;
+}
+
+.chair-1,
+.chair-2,
+.chair-3,
+.chair-4 {
+    transform-origin: center center;
+    animation-timing-function: linear;
+    backface-visibility: hidden;
+}
+
+.chair-1 {
+    transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(179.5deg);
+    animation: rotate-1 10s linear infinite 1s;
+}
+
+@keyframes rotate-1 {
+    100% {
+        transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(539.5deg);
+    }
+}
+
+.chair-2 {
+    transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(270deg);
+    animation: rotate-2 10s linear infinite 1s;
+}
+
+@keyframes rotate-2 {
+    100% {
+        transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(-90deg);
+    }
+}
+
+.chair-3 {
+    transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(-270deg);
+    animation: rotate-3 10s linear infinite 1s;
+}
+
+@keyframes rotate-3 {
+    100% {
+        transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(90deg);
+    }
+}
+
+.chair-4 {
+    transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(2.5deg);
+    animation: rotate-4 10s linear infinite 1s;
+}
+
+@keyframes rotate-4 {
+    100% {
+        transform: scale(1.2) translateZ(50px) rotateX(-15deg) rotateY(362.5deg);
+    }
+}
+
+.scene .chair::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background: rgba(112, 112, 112, 0.4);
+    filter: blur(40px);
+}
+
+
+.scene-1 .chair::after {
+    top: 70%;
+    left: 25%;
+    transform: rotateX(90deg) translate(-50%, -50%) translate3d(0, 100px, 0);
+}
+
+
+.scene-2 .chair::after {
+    top: 70%;
+    left: 0%;
+    transform: rotateX(90deg) translate(-50%, -50%) translate3d(0, 40px, 0);
+}
+
+.scene-3 .chair::after {
+    top: 70%;
+    right: 0;
+    transform: rotateX(90deg) translate(-50%, -50%) translate3d(0, 40px, 0);
+}
+
+.scene-4 .chair::after {
+    top: 55%;
+    left: 25%;
+    transform: rotateX(90deg) translate(-50%, -50%) translate3d(0, 40px, 0);
+}
+
+.chair-seat,
+.chair-back {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 190px;
+    height: 200px;
+    transform-origin: bottom;
+}
+
+.chair-seat {
+    transform: rotateX(75deg) translate3d(0, -15px, 0);
+    transform-origin: 50% 90%;
+    z-index: 5;
+    z-index: 100;
+}
+
+.chair-back {
+    height: 300px;
+    width: 170px;
+    left: 30px;
+    top: -100px;
+    transform: rotateX(-15deg);
+}
+
+.chair-leg-front {
+    width: 10px;
+    height: 150px;
+    background-color: #6e5577;
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    transform: translate3d(0, 0, -165px);
+}
+
+.chair-leg-front.top {
+    width: 10px;
+    height: 10px;
+    background: #5e4966;
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    transform: translate3d(0, 0, -165px) rotateX(-90deg);
+}
+
+.chair-leg-front.side {
+    transform: translate3d(0, 0, -165px) rotateY(-90deg);
+}
+
+.chair-leg-front.is-right {
+    left: 210px;
+    transform-origin: bottom;
+}
+
+.chair-bar-front {
+    background-color: #6e5577;
+    height: 10px;
+    width: 240px;
+    position: absolute;
+    top: 230px;
+    left: 0;
+    transform: translate3d(0, 0, -155px);
+}
+
+.chair-bar-front.side {
+    background: #5e4966;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 230px;
+    left: -10px;
+    transform: translate3d(0, 0, -155px) rotateY(-90deg);
+}
+
+
+.chair-bar-front.side.is-right {
+    left: 240px !important;
+}
+
+
+.chair-bar-front.back {
+    transform: translate3d(0, 0, -145px);
+}
+
+.chair-arm {
+    width: 30px;
+    height: 170px;
+    background-color: #6e5577;
+    top: 80px;
+    position: absolute;
+    left: -10px;
+    transform: rotateX(-90deg) translate3d(0, -60px, 0);
+    transform-origin: top;
+}
+
+.chair-arm.bottom {
+    top: 90px;
+}
+
+.chair-arm.side {
+    width: 10px;
+    transform: rotateX(-90deg) translate3d(0, -60px, 5px) rotateY(90deg);
+}
+
+.chair-arm.side.inner {
+    width: 10px;
+    transform: rotateX(-90deg) translate3d(-10px, -60px, 5px) rotateY(90deg);
+}
+
+.chair-arm.is-right {
+    left: 210px;
+}
+
+.chair-arm.is-right.side {
+    transform: rotateX(-90deg) translate3d(30px, -60px, 5px) rotateY(90deg);
+}
+
+.chair-arm.is-right.side.inner {
+    background-color: #6e5577;
+    transform: rotateX(-90deg) translate3d(0, -60px, 5px) rotateY(90deg);
+}
+
+.chair-arm-front {
+    width: 30px;
+    height: 10px;
+    background: #5e4966;
+    top: 80px;
+    position: absolute;
+    left: -10px;
+    transform: translate3d(0, 0, -110px);
+    transform-origin: top;
+}
+
+.chair-arm-back {
+    width: 30px;
+    height: 10px;
+    background: #5e4966;
+    top: 80px;
+    position: absolute;
+    left: -10px;
+    transform: translate3d(0, 0, 60.5px);
+}
+
+.chair-arm-front.is-right {
+    left: 210px;
+}
+
+.is-right {
+    left: 210px !important;
+}
+
+.chair-bar-back {
+    width: 240px;
+    height: 10px;
+    background-color: #6e5577;
+    top: 80px;
+    position: absolute;
+    left: -15px;
+    transform: translate3d(0, 0, 57.5px);
+    transform-origin: top;
+}
+
+.chair-bar-back.back {
+    transform: translate3d(0, 0, 60px);
+}
+
+.chair-bar-back.bottom,
+.chair-bar-back.top {
+    transform: translate3d(0, 0, 60px) rotateX(-90deg);
+}
+
+.chair-bar-back.bottom {
+    top: 90px;
+}
+
+.chair-leg-back {
+    width: 10px;
+    height: 180px;
+    background-color: #6e5577;
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    transform: translate3d(0, 0, 50px);
+}
+
+.chair-leg-back.side {
+    transform: translate3d(0, 0, 50px) rotateY(-90deg);
+}
+
+.chair-leg-back.back {
+    transform: translate3d(0, 0, 55px);
+}
+
+.chair-leg-back.side.back {
+    transform: translate3d(0, 0, 55px) rotateY(-90deg);
+}
+
+.chair-bar-side {
+    width: 10px;
+    height: 220px;
+    background-color: #6e5577;
+    top: 235px;
+    position: absolute;
+    left: 0px;
+    transform: rotateX(-90deg) translate3d(0, -60px, 0);
+    transform-origin: top;
+}
+
+.chair-bar-side.side {
+    width: 10px;
+    transform: rotateX(-90deg) translate3d(0, -60px, 5px) rotateY(90deg);
+}
+
+.chair-bar-side.side.is-right,
+.chair-bar-side.is-right {
+    left: 220px !important;
+}
+
+.chair-bar-side-front {
+    width: 10px;
+    height: 10px;
+    background: #5e4966;
+    left: 0;
+    position: absolute;
+    top: 235px;
+    transform: translate3d(0, 0, -160px);
+}
+
+.chair-bar-side-back {
+    width: 10px;
+    height: 10px;
+    background: #5e4966;
+    left: 0;
+    position: absolute;
+    top: 235px;
+    transform: translate3d(0, 0, 60px);
+}
+
+.chair-bar-side-front.is-right,
+.chair-bar-side-back.is-right {
+    left: 220px !important;
+}
+
+.chair-bar.is-right.side {
+    transform: rotateX(-90deg) translate3d(30px, -60px, 5px) rotateY(90deg);
+}
+
+.chair-leg-mid {
+    width: 10px;
+    height: 180px;
+    background-color: #6e5577;
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    transform: translate3d(0, 0, 10px);
+}
+
+.chair-leg-mid.side {
+    transform: translate3d(0, 0, 10px) rotateY(-90deg);
+}
+
+.chair-leg-mid.mid {
+    transform: translate3d(0, 0, 15px);
+}
+
+.chair-leg-mid.side.mid {
+    transform: translate3d(0, 0, 15px) rotateY(-90deg);
+}
+
+.box {
+    transform-style: preserve-3d;
+    transform: rotateZ(30deg);
+}
+
+.box>div {
+    background: linear-gradient(145deg, #775c81, #775c81);
+    box-shadow:
+        inset 10px 10px #6e5577,
+        inset -10px -10px #6e5577;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.box-2>div {
+    background: linear-gradient(145deg, #775c81, #775c81);
+    box-shadow:
+        inset 10px 10px #6e5577,
+        inset -10px -10px #6e5577;
+}
+
+.box-front {
+    width: 400px;
+    height: 400px;
+    transform: translate3d(0, 0, 400px);
+}
+
+.box-back {
+    width: 400px;
+    height: 400px;
+}
+
+.box-left {
+    width: 400px;
+    height: 400px;
+    transform-origin: left;
+    transform: rotateY(-90deg);
+}
+
+.box-right {
+    width: 400px;
+    height: 400px;
+    transform-origin: left;
+    transform: rotateY(-90deg);
+}
+
+.box-bottom {
+    width: 400px;
+    height: 400px;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+
+.box-top {
+    width: 400px;
+    height: 400px;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+.box {
+    transform: translate3d(-213px, -95px, 85px) rotateX(-10deg) rotateY(-180deg) rotateZ(0deg) scaleY(0.75) scaleX(1.12);
+    transform-origin: 50% 50%;
+}
+
+.box-back {
+    width: 170px;
+    height: 320px;
+}
+
+.box-front {
+    width: 170px;
+    height: 320px;
+    transform: translate3d(0, 0, 5px);
+}
+
+.box-left {
+    width: 5px;
+    height: 320px;
+}
+
+.box-right {
+    width: 5px;
+    height: 320px;
+    transform: translate3d(170px, 0px, 0px) rotateY(-90deg);
+}
+
+.box-bottom {
+    width: 170px;
+    height: 5px;
+    transform: translate3d(0px, 320px, 0px) rotateX(90deg);
+}
+
+.box-top {
+    width: 170px;
+    height: 5px;
+}
+
+.box-2 {
+    transform: translate3d(20px, 141px, -192px) rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+    transform-origin: top;
+}
+
+.box-2 .box-back {
+    width: 190px;
+    height: 230px;
+}
+
+.box-2 .box-front {
+    width: 190px;
+    height: 230px;
+    transform: translate3d(0, 0, 5px);
+}
+
+.box-2 .box-left {
+    width: 5px;
+    height: 230px;
+}
+
+.box-2 .box-right {
+    width: 5px;
+    height: 230px;
+    transform: translate3d(190px, 0px, 0px) rotateY(-90deg);
+}
+
+.box-2 .box-bottom {
+    width: 190px;
+    height: 5px;
+    transform: translate3d(0px, 230px, 0px) rotateX(90deg);
+}
+
+.box-2 .box-top {
+    width: 190px;
+    height: 5px;
+}
+
+/* STYLES FOR CHAIR */
+
+/* STYLES FOR LAPTOP */
+
+.laptop {
+    position: absolute;
+    top: 39%;
+    left: 50.75%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 300px;
+    height: 300px;
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+}
+
+.laptop .monitor {
+    position: absolute;
+    /* border: 5px solid #000000; */
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    left: 50%;
+    top: 76%;
+    transform: translate(-50%, -50%) perspective(3000px) rotateX(-100deg) scaleX(1.1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* .laptop:hover .monitor {
+    animation:
+        open-laptop-adjust 2s ease-in forwards,
+        open-laptop-monitor 2.3s ease-in forwards;
+} */
+
+.laptop .monitor:not(:hover) {
+    transform: translate(-50%, -50%) perspective(3000px) rotateX(-100deg) scaleX(1.1);
+    top: 76%;
+    transition: transform 2.5s ease-out, top 2.5s ease-out;
+    animation:
+        close-laptop-adjust 2.52s ease-in forwards,
+        close-laptop-monitor 2.47s ease-in forwards;
+}
+
+.table:hover~.laptop .monitor {
+    animation:
+        open-laptop-adjust 1.95s ease-in forwards,
+        open-laptop-monitor 2.3s ease-in forwards;
+}
+
+@keyframes open-laptop-monitor {
+    0% {
+        transform: translate(-50%, -50%) perspective(3000px) rotateX(-100deg) scaleX(1.1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) perspective(3000px) rotateX(-15deg) scaleX(1);
+        top: 42.5%;
+        width: 95%;
+        height: 150px;
+    }
+}
+
+@keyframes close-laptop-monitor {
+    0% {
+        transform: translate(-50%, -50%) perspective(3000px) rotateX(-15deg) scaleX(1);
+        top: 42.5%;
+        width: 95%;
+        height: 150px;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) perspective(3000px) rotateX(-100deg) scaleX(1.1);
+    }
+}
+
+@keyframes open-laptop-adjust {
+    0% {
+        top: 76%;
+    }
+
+    100% {
+        top: 42.5%;
+    }
+}
+
+@keyframes close-laptop-adjust {
+    0% {
+        top: 42.5%;
+    }
+
+    100% {
+        top: 76%;
+    }
+}
+
+.laptop .monitor .monitor-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 5px solid #4c3355;
+    background: #4c3355;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* animation: start-monitor 1s 5s forwards; */
+}
+
+.laptop .monitor .monitor-body::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.5s ease-out;
+}
+
+.table:hover~.laptop .monitor .monitor-body::before {
+    animation: laptop-on 2s ease-in forwards;
+    animation-delay: 2.5s;
+}
+
+.laptop .monitor .monitor-body::after {
+    content: 'Conference Room';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-wrap: nowrap;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.5s ease-out;
+}
+
+.table:hover~.laptop .monitor .monitor-body::after {
+    animation: laptop-on 2s ease-in forwards;
+    animation-delay: 5s;
+}
+
+.table~.laptop .monitor .monitor-body:not(::after) {
+    animation: laptop-off 1s ease-out forwards;
+    animation-delay: 0s;
+}
+
+@keyframes laptop-on {
+
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes laptop-off {
+
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.laptop .bottom_part {
+    position: absolute;
+    border: 5px solid #4c3355;
+    border-radius: 2px;
+    height: 150px;
+    background: #4c3355;
+    left: 0px;
+    right: 0px;
+    bottom: 2px;
+    transform: perspective(3000px) rotateX(72deg);
+}
+
+.table:hover~.laptop .bottom_part,
+.table:hover~.laptop .keyboard {
+    animation: bg-change 2s ease-in forwards;
+    animation-delay: 2.5s;
+}
+
+.laptop .bottom_part:not(:hover),
+.laptop .keyboard:not(:hover) {
+    animation: bg-default 1s ease-out forwards;
+    animation-delay: 0s;
+}
+
+@keyframes bg-change {
+    0% {
+        background: #4c3355;
+    }
+
+    100% {
+        background: #ffffff;
+    }
+}
+
+@keyframes bg-default {
+    0% {
+        background: #ffffff;
+    }
+
+    100% {
+        background: #4c3355;
+    }
+}
+
+.laptop .keyboard {
+    padding: 7px;
+    padding-bottom: 3px;
+    background: #4c3355;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    /* Rounded corners for keyboard */
+}
+
+.laptop .keyboard img {
+    width: 100%;
+}
+
+.laptop .touchpad {
+    background: #080808;
+    width: 45px;
+    padding: 10px;
+    height: 17px;
+    margin-top: 6px;
+    border-radius: 3px;
+    /* Rounded corners for touchpad */
+}
